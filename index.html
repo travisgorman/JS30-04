@@ -13,13 +13,13 @@
     // Some data we can work with
 
     const inventors = [
-      { first: 'Albert', last: 'Einstein', birth: 1879, death: 1955 },
-      { first: 'Isaac', last: 'Newton', birth: 1643, death: 1727 },
-      { first: 'Galileo', last: 'Galilei', birth: 1564, death: 1642 },
-      { first: 'Marie', last: 'Curie', birth: 1867, death: 1934 },
-      { first: 'Johannes', last: 'Kepler', birth: 1571, death: 1630 },
-      { first: 'Nicolaus', last: 'Copernicus', birth: 1473, death: 1543 },
-      { first: 'Max', last: 'Planck', birth: 1858, death: 1947 }
+      { first: 'Albert', last: 'Einstein', year: 1879, death: 1955 },
+      { first: 'Isaac', last: 'Newton', year: 1643, death: 1727 },
+      { first: 'Galileo', last: 'Galilei', year: 1564, death: 1642 },
+      { first: 'Marie', last: 'Curie', year: 1867, death: 1934 },
+      { first: 'Johannes', last: 'Kepler', year: 1571, death: 1630 },
+      { first: 'Nicolaus', last: 'Copernicus', year: 1473, death: 1543 },
+      { first: 'Max', last: 'Planck', year: 1858, death: 1947 }
     ];
 
     const flavours = ['Chocolate Chip', 'Kulfi', 'Caramel Praline', 'Chocolate', 'Burnt Caramel', 'Pistachio', 'Rose', 'Sweet Coconut', 'Lemon Cookie', 'Toffeeness', 'Toasted Almond', 'Black Raspberry Crunch', 'Chocolate Brownies', 'Pistachio Almond', 'Strawberry', 'Lavender Honey', 'Lychee', 'Peach', 'Black Walnut', 'Birthday Cake', 'Mexican Chocolate', 'Mocha Almond Fudge', 'Raspberry'];
@@ -28,79 +28,91 @@
 
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-console.log( 'QUESTION #1 filter the list of inventors for those who were born in the 1500s:' )
-  // const now = new Date();
-  // const thisYear = now.getFullYear();
-    
-// console.log( 
-// `There were ${inventors.filter(inventor => 
-//               thisYear-inventor.year >= 417 &&
-//               thisYear-inventor.year <= 518).length} inventors born in the 1500's`,
-//  )
+console.log( 
+'QUESTION #1 filter the list of inventors for those who were born in the 1500s:' )
   const now = new Date();
   const thisYear = now.getFullYear();
     
   const bornIn1500s = inventors.filter(inventor => 
-      thisYear - inventor.birth >= 417 &&
-      thisYear - inventor.birth <= 518);
+      thisYear - inventor.year >= 417 &&
+      thisYear - inventor.year <= 518);
 
 console.log( bornIn1500s )
 console.log(`${bornIn1500s.length} inventors were born in the 1500s:`)
 
 bornIn1500s.forEach(inventor => 
-      console.log( 
-        inventor.first, 
-        inventor.last + " born in " + inventor.birth
-      )) 
-
-
-    // Array.prototype.map()
-    // 2. Give us an array of the inventory first and last names
+  console.log( 
+    inventor.first, 
+    inventor.last + " born in " + inventor.year
+  ))
 
 console.log(
-    'QUESTION #2 make an array of the inventors first and last names:',
+'QUESTION #2 make an array of the inventors first and last names:',
 
     inventors.map(i => `${i.first} ${i.last}`)
 );
 
+//
 console.log( 
-    'QUESTION #3 Sort the inventors by birthdate, oldest to youngest',
-
-    inventors.sort((a, b) => a.birth > b.birth ? 1 : -1 )
+'QUESTION #3 Sort the inventors by birthdate, oldest to youngest'
 );
-    // Array.prototype.sort()
-    // 3. Sort the inventors by birthdate, oldest to youngest
+console.log(
+'Question #3 ANSWER!!:',
+  inventors.sort( (a, b) => a.year > b.year ? 1 : -1 )
+);
+
+console.log( 
+'QUESTION #4 How many years did all the inventors live?:' 
+)
+
+const totalYears = inventors.reduce( (total, inventor) => {
+  return total + (inventor.death - inventor.year);
+}, 0);
+
+console.log( 'Question #4 ANSWER:', totalYears );
+
+//
+console.log( 
+'QUESTION #5 Sort the inventors by years lived:' 
+)  
+const oldest =inventors.sort( (a, b) => {
+  let lastGuy = a.death-a.year;
+  let nextGuy = b.death-b.year;
+  if (nextGuy > lastGuy){
+    return 1
+  } else return -1
+});
+
+console.log( 'Question #5 ANSWER:', oldest )
+
+
+//
+console.log( 
+`QUESTION #6 create a list of Boulevards in Paris that contain 'de' anywhere in the name:`
+)  
+// https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
 
 
-// let dec = strings.sort(compare(a,b){
-//   return b-a;
-// });
-
-console.log( 'QUESTION #4 ANSWER:' )  
-    // Array.prototype.reduce()
-    // 4. How many years did all the inventors live?
+//
+console.log( 
+'QUESTION #7 Sort the people alphabetically by last name:'
+)  
 
 
-console.log( 'QUESTION #5 ANSWER:' )  
-    // 5. Sort the inventors by years lived
+
+//
+console.log( 
+'QUESTION #8 Sum up the instances of each of these words:' 
+)
+const data = [
+  'car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' 
+];
 
 
-console.log( 'QUESTION #6 ANSWER:' )  
-    // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
-    // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
-
-console.log( 'QUESTION #7 ANSWER:' )  
-    // 7. sort Exercise
-    // Sort the people alphabetically by last name
 
 
-console.log( 'QUESTION #8 ANSWER:' )  
-    // 8. Reduce Exercise
-    // Sum up the instances of each of these
 
-
-    const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
   </script>
 </body>
