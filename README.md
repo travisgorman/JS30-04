@@ -45,7 +45,6 @@ ___
 
 ```js
 	const inventorNames = inventors.map(i => i.first + ", "+ i.last);
-
 ```
 
 `inventorNames` returns an array of strings. I'm concatenating the `last` to `first` with a comma and space in between the two.
@@ -103,17 +102,18 @@ ___
     const [bLast, bFirst] = nextOne.split(', ');
     return aLast > bLast ? 1 : -1;
   });
-
 ```
-
 
 ___
 
 ## QUESTION #8 — Sum up the instances of each word in the `words` array
 
 ```js
-
-
+  const tally = data.reduce((obj, item) => {
+    if (!obj[item]) obj[item] = 0;
+    obj[item]++;
+    return obj;
+  },{});
 ```
 
 

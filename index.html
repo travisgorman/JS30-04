@@ -95,7 +95,6 @@ console.log(
 //   .map(link => link.textContent)
 //     .filter(streetName => streetName.includes('de'));
 
-
 //
 console.log( 
 'QUESTION #7 Sort the people alphabetically by last name:'
@@ -105,7 +104,7 @@ console.log(
     const [bLast, bFirst] = nextOne.split(', ');
     return aLast > bLast ? 1 : -1;
   });
-  
+
 console.log( 'QUESTION #7 ANSWER:', alpha )
   
 
@@ -118,10 +117,15 @@ const data = [
   'car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' 
 ];
 
+  const tally = data.reduce((obj, item) => {
+    if (!obj[item]) obj[item] = 0;
+    obj[item]++;
+    return obj;
+  },{});
 
 
 
-
+  console.log( tally )
 
   </script>
 </body>
