@@ -17,7 +17,7 @@ QUESTION #1 filter the list of inventors for those who were born in the 1500s:
       console.log( inventor.first, inventor.last + " born in " + inventor.year)) 
 ```
 
-To find the inventors born in the 1500's, I see how their birth year compares with the current year. They need to have been born at least 417 years ago, but not more than 518 years ago. 
+To find the inventors born in the 1500's, I look at how their birth year compares with the current year. They need to have been born at least 417 years ago, but not more than 518 years ago. I return the objects meeting that criteria with `filter`
 
 ___
 QUESTION #2 Give us an array of the inventory first and last names:
